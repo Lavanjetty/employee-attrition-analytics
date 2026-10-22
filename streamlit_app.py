@@ -60,7 +60,10 @@ st.markdown("""
 # -----------------------------------------------------------------------------
 @st.cache_data
 def load_data():
+    base_dir = os.path.dirname(os.path.abspath(__file__))
     candidates = [
+        os.path.join(base_dir, "HR_Attrition_dataset.csv"),
+        os.path.join(base_dir, "HR_Attrition_dataset(3).csv"),
         "HR_Attrition_dataset.csv",
         "HR_Attrition_dataset(3).csv",
         "../HR_Attrition_dataset.csv",

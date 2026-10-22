@@ -32,7 +32,10 @@ from mlxtend.preprocessing import TransactionEncoder
 warnings.filterwarnings("ignore")
 
 # ---- Load data: upload CSV in Colab if not already present ----
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CSV_CANDIDATES = [
+    os.path.join(BASE_DIR, "HR_Attrition_dataset.csv"),
+    os.path.join(BASE_DIR, "HR_Attrition_dataset(3).csv"),
     "/content/HR_Attrition_dataset.csv",
     "/content/HR_Attrition_dataset(3).csv",
     "HR_Attrition_dataset.csv",
@@ -600,5 +603,21 @@ with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue"), css=CSS, title="Employe
         "- Prediction probabilities are model estimates and should support—not replace—human review."
     )
 
-print("Launching dashboard. Wait for the public Gradio URL below.")
-demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", "7860")))
+print("Launching dashboard. Generating public Gradio URL...")
+app_obj, local_url, share_url = demo.launch(share=True, server_name="0.0.0.0", server_port=int(os.environ.get("PORT", "7860")))
+print(f"GRADIO_LOCAL_URL: {local_url}")
+print(f"GRADIO_SHARE_URL: {share_url}")
+url_path = os.path.join(BASE_DIR, "gradio_public_url.txt")
+with open(url_path, "w", encoding="utf-8") as f:
+    f.write(str(share_url or ""))
+
+if share_url:
+    index_html_path = os.path.join(BASE_DIR, "netlify-site", "index.html")
+    if os.path.exists(index_html_path):
+        with open(index_html_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        import re
+        updated_content = re.sub(r'https://[a-zA-Z0-9-]+\.gradio\.live', share_url, content)
+        with open(index_html_path, "w", encoding="utf-8") as f:
+            f.write(updated_content)
+        print("Updated netlify-site/index.html with live Gradio URL.")

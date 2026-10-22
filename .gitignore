@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .env
 .ipynb_checkpoints/
+
+.netlify/
+gradio_public_url.txt

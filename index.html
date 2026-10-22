@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive Employee Attrition Analytics Dashboard">
+  <title>Employee Attrition Analytics | HR Intelligence</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Inter, Arial, sans-serif; color:#172033; background:#f4f7fb; }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:18px 7%; background:#fff; border-bottom:1px solid #e5eaf2; }
+    .brand { font-weight:800; letter-spacing:.2px; color:#1d4ed8; font-size:20px; }
+    nav a { text-decoration:none; color:#1d4ed8; font-weight:700; }
+    header { text-align:center; padding:64px 20px 48px; background:linear-gradient(130deg,#0f172a,#1d4ed8); color:white; }
+    .eyebrow { color:#bfdbfe; letter-spacing:2px; font-size:12px; font-weight:800; }
+    h1 { margin:15px 0; font-size:clamp(30px,5vw,48px); }
+    header p { max-width:760px; margin:auto; color:#dbeafe; line-height:1.75; }
+    .features { max-width:1100px; margin:26px auto; padding:0 18px; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .feature { background:white; border:1px solid #e2e8f0; border-radius:14px; padding:18px; }
+    .feature strong { display:block; margin-bottom:7px; color:#1d4ed8; }
+    .feature span { color:#64748b; font-size:14px; line-height:1.5; }
+    main { max-width:1250px; margin:28px auto 50px; padding:0 18px; }
+    .app-card { background:white; border:1px solid #e2e8f0; border-radius:20px; padding:22px; box-shadow:0 14px 36px #0f172a0c; }
+    .app-card h2 { margin:0 0 8px; }
+    .hint { color:#64748b; line-height:1.6; margin:0 0 18px; }
+    iframe { width:100%; height:1050px; border:1px solid #e2e8f0; border-radius:12px; background:white; }
+    .notice { margin-top:14px; padding:12px 14px; background:#eff6ff; border-radius:10px; color:#1e40af; font-size:14px; line-height:1.6; }
+    footer { padding:25px; text-align:center; color:#64748b; font-size:13px; }
+    @media(max-width:760px) { .features { grid-template-columns:repeat(2,1fr); } iframe { height:1250px; } header { padding:48px 18px; } .app-card { padding:14px; } }
+    @media(max-width:420px) { .features { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">HR INTELLIGENCE</div>
+    <a href="#dashboard">Open Dashboard ↓</a>
+  </nav>
+  <header>
+    <div class="eyebrow">DATA WAREHOUSING & DATA MINING PROJECT</div>
+    <h1>Employee Attrition Analytics</h1>
+    <p>Explore workforce trends through interactive dashboards, K-Means clustering, Decision Tree and Random Forest comparison, association-rule mining, and employee attrition risk prediction.</p>
+  </header>
+  <section class="features" aria-label="Dashboard modules">
+    <div class="feature"><strong>01 · Overview</strong><span>Employee counts, attrition distribution, and model comparison.</span></div>
+    <div class="feature"><strong>02 · K-Means</strong><span>Explore employee clusters and silhouette scores.</span></div>
+    <div class="feature"><strong>03 · Classification</strong><span>Compare models using accuracy, precision, recall, F1, and ROC-AUC.</span></div>
+    <div class="feature"><strong>04 · Prediction</strong><span>Estimate attrition risk from employee attributes.</span></div>
+  </section>
+  <main id="dashboard">
+    <section class="app-card">
+      <h2>Interactive Analytics Dashboard</h2>
+      <p class="hint">Use the dashboard below to interact with the analysis. You can also <a href="https://69ceb6cfaa938a5677.gradio.live" target="_blank" style="color:#1d4ed8;font-weight:600;text-decoration:underline;">open the Gradio dashboard directly in a new tab ↗</a>.</p>
+      <iframe
+        src="https://69ceb6cfaa938a5677.gradio.live"
+        title="Employee Attrition Analytics Gradio dashboard"
+        loading="lazy"
+        allow="clipboard-read; clipboard-write">
+      </iframe>
+    </section>
+  </main>
+  <footer>Employee Attrition Analytics · Academic Project · Built with Python, Gradio and Netlify</footer>
+</body>
+</html>
